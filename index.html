@@ -139,7 +139,7 @@
     <h1>PACT Inc &mdash; <span class="acc">Demo Guide</span></h1>
     <h2>Walking the prospect through their custom-packaging Sales Cloud POC &mdash; confidently</h2>
     <div class="cover-meta">
-      <div><span>RUNTIME</span>~10 minutes (9 steps)</div>
+      <div><span>RUNTIME</span>~12 minutes (10 steps)</div>
       <div><span>ORG</span>page-flow-4367 (Sales Cloud trial)</div>
       <div><span>USER</span>Tej &mdash; System Administrator</div>
       <div><span>PRIMARY OBJECT</span>Opportunity = Packaging Quote</div>
@@ -154,6 +154,7 @@
   <h3>WHY THIS DEMO LANDS</h3>
   <p>PACT Inc is a custom-packaging manufacturer with a <strong>two-person sales team</strong> running quotes, customers, and production schedules across <strong>monday.com tabs, Gmail, QuickBooks, and Word templates</strong>. Josh's words: monday.com "isn't user-friendly for non-technical staff," and parent companies can't be cleanly linked to their contacts and orders.</p>
   <p>This POC puts the whole quote motion into one Sales Cloud pane: every customer as an Account with its contacts and order history, every deal moving <strong>Qualification &rarr; Quote Requested &rarr; Quote Sent &rarr; Negotiation/Review &rarr; Closed Won</strong> on a guided path, with automation chasing stale quotes and handing won deals to production. The demo follows one customer &mdash; <strong>Beacon Foods Manufacturing</strong> &mdash; through that journey. All declarative: no hidden fees, no AI surcharges, trainable in an afternoon.</p>
+  <p>Crucially, PACT keeps <strong>quotes and production separate</strong> &mdash; Josh's own words: "I don't want quotes to be finished because they're not production." So quotes live on the <strong>Opportunity</strong> (the sales pipeline), and the moment a quote is <strong>won</strong>, a flow spins up a dedicated <strong>Active Order</strong> record for the production team to manage on its own status lifecycle. Not every quote becomes an order, and a won quote never clutters the production view. One simple flow, one custom object &mdash; exactly what the SE team scoped.</p>
 </div>
 
 <div class="preflight">
@@ -166,12 +167,12 @@
     <li>Open the <strong>PACT Sales Overview</strong> dashboard once and click <strong>Refresh</strong> &mdash; components cache for 60 minutes</li>
     <li>Have this guide on your second monitor &mdash; every screenshot is what you should see in the org</li>
     <li>Have the enablement deck on the prospect-facing screen for the framing slides</li>
-    <li>Step 8 exercises the <strong>Send Quote Reminder</strong> quick action live &mdash; you'll update the quote status/due date in front of them</li>
+    <li>Step 9 exercises the <strong>Send Quote Reminder</strong> quick action live &mdash; you'll update the quote status/due date in front of them</li>
   </ul>
 </div>
 
 <div class="toc">
-  <h3>DEMO FLOW &mdash; 9 STEPS</h3>
+  <h3>DEMO FLOW &mdash; 10 STEPS</h3>
   <ol>
     <li><a href="#step1">Account 360 &mdash; Beacon Foods Manufacturing</a><span class="duration">90 sec</span></li>
     <li><a href="#step2">The quote pipeline &mdash; every deal in one view</a><span class="duration">60 sec</span></li>
@@ -179,9 +180,10 @@
     <li><a href="#step4">Stage 2 &mdash; Quote Requested</a><span class="duration">45 sec</span></li>
     <li><a href="#step5">Stage 3 &mdash; Quote Sent</a><span class="duration">60 sec</span></li>
     <li><a href="#step6">Stage 4 &mdash; Negotiation/Review &amp; the At-Risk flag</a><span class="duration">75 sec</span></li>
-    <li><a href="#step7">Stage 5 &mdash; Closed Won &amp; production handoff</a><span class="duration">75 sec</span></li>
-    <li><a href="#step8">Send Quote Reminder &mdash; live quick action</a><span class="duration">45 sec</span></li>
-    <li><a href="#step9">Command Center &mdash; PACT Sales Overview</a><span class="duration">90 sec</span></li>
+    <li><a href="#step7">Stage 5 &mdash; Closed Won &rarr; auto-creates an Active Order</a><span class="duration">75 sec</span></li>
+    <li><a href="#step8">Active Orders &mdash; production, kept separate</a><span class="duration">90 sec</span></li>
+    <li><a href="#step9">Send Quote Reminder &mdash; live quick action</a><span class="duration">45 sec</span></li>
+    <li><a href="#step10">Command Center &mdash; PACT Sales Overview</a><span class="duration">90 sec</span></li>
   </ol>
 </div>
 
@@ -345,28 +347,53 @@
   <div class="step-head">
     <div class="step-num">7</div>
     <div class="step-title">
-      <h2>Stage 5 &mdash; Closed Won &amp; Production Handoff <span class="tag">THE PATH</span></h2>
-      <div class="meta">The win &mdash; and the moment sales hands off to production without a quote falling between them.</div>
+      <h2>Stage 5 &mdash; Closed Won &rarr; Auto-Creates an Active Order <span class="tag">THE PATH</span></h2>
+      <div class="meta">The win &mdash; and the exact moment production begins, without the quote ever turning into a production item itself.</div>
     </div>
   </div>
   <h4>CLICK PATH</h4>
   <div class="click-path">Opportunities &rarr; open <code>Beacon Foods - Glossy Film Pilot</code></div>
   <h4>WHAT TO SAY</h4>
-  <div class="script">When a quote is won, the path completes and a record-triggered flow fires the handoff &mdash; it creates a task for production scheduling, pulls the package spec together, and notifies the team. The Production Schedule Link points straight at the production board. Josh's exact worry &mdash; "quotes falling between sales and production" &mdash; is closed by automation. And because Closed Won is a real won stage, the moment you mark it, your revenue dashboards are current.</div>
+  <div class="script">Here's the piece we built for you after the last call. When a quote is won, the path completes &mdash; and a flow automatically spins up a separate <strong>Active Order</strong> record for the production team. The quote stays a quote in your sales pipeline; production gets its own clean record to work from. That's your exact point, Josh &mdash; "I don't want quotes to be finished because they're not production." They never get tangled now. And because Closed Won is a real won stage, your revenue dashboards update the moment you mark it.</div>
   <h4>WHAT TO POINT OUT</h4>
   <ul class="point-list">
     <li><strong>Quote Status = Won</strong> and the path fully lit, Qualification through Closed Won</li>
-    <li><strong>Opportunity Closed Won</strong> flow &mdash; auto-creates the production handoff task + team notification</li>
-    <li><strong>Production Schedule Link</strong> &mdash; the bridge to the production board, on the record</li>
+    <li><strong>Active Order from Closed Won</strong> flow &mdash; one record-triggered flow creates the production Active Order automatically (carrying the customer, value, spec, and a link back to this quote)</li>
+    <li><strong>Quotes stay in the sales pipeline; production lives on its own object</strong> &mdash; the two are deliberately kept separate</li>
   </ul>
   <div class="shots">
-    <div class="shot"><img src="screenshots/step-07-closed-won.png" alt="Closed Won stage"><div class="shot-label">Beacon Foods - Glossy Film Pilot &middot; Closed Won &middot; handed to production</div></div>
+    <div class="shot"><img src="screenshots/step-07-closed-won.png" alt="Closed Won stage"><div class="shot-label">Beacon Foods - Glossy Film Pilot &middot; Closed Won &middot; spawns an Active Order</div></div>
   </div>
 </div>
 
-<div class="step" id="step8">
+<div class="step kraft" id="step8">
   <div class="step-head">
     <div class="step-num">8</div>
+    <div class="step-title">
+      <h2>Active Orders &mdash; Production, Kept Separate <span class="tag">NEW</span></h2>
+      <div class="meta">This is PACT's production board, rebuilt in Salesforce: a dedicated object the production team works, created automatically from won quotes &mdash; the direct answer to keeping quotes and production apart.</div>
+    </div>
+  </div>
+  <h4>CLICK PATH</h4>
+  <div class="click-path">App Launcher &rarr; <code>Active Orders</code> &rarr; open <code>AO-00000</code> (or open it from the won quote's <em>Active Orders</em> related list)</div>
+  <h4>WHAT TO SAY</h4>
+  <div class="script">Every won quote lands here as an Active Order. The production team lives in this object &mdash; they never touch the sales pipeline, and sales never sees half-built production noise. Each order carries everything production needs: the customer, the package spec, the purchase order number, a priority (including Rush), a target ship date, and a link straight back to the originating quote. And it moves through its own status &mdash; Submitted &rarr; Scheduled &rarr; In Production &rarr; Finished &rarr; Ready to Ship &rarr; Shipped &mdash; the same flow you track on monday.com today, just cleaner. Once it ships, it drops out of the active list, exactly like you do now.</div>
+  <h4>WHAT TO POINT OUT</h4>
+  <ul class="point-list">
+    <li><strong>Production Status</strong> &mdash; the full production lifecycle (Submitted &rarr; Scheduled &rarr; In Production &rarr; Finished &rarr; Ready to Ship &rarr; Shipped); a guided Path is configured over this field for the production team</li>
+    <li><strong>Customer + Source Opportunity (Quote)</strong> &mdash; production sees who it's for and can click straight back to the originating quote</li>
+    <li><strong>Purchase Order Number &amp; Priority</strong> &mdash; the PO Josh attaches to each order, plus a Rush flag for hot jobs</li>
+    <li><strong>"In Production" list view</strong> &mdash; the production team's working queue; shipped orders fall off automatically</li>
+  </ul>
+  <div class="shots">
+    <div class="shot"><img src="screenshots/step-12-active-order.png" alt="Active Order record"><div class="shot-label">AO-00000 &middot; Beacon Foods &middot; In Production &mdash; auto-created from the won quote</div></div>
+  </div>
+  <div class="recovery"><strong>Talk track:</strong> four Active Orders are seeded across the production stages (Submitted, In Production, Ready to Ship, Shipped) so you can show the spread. AO-00003 was created live by the flow when its quote was won.</div>
+</div>
+
+<div class="step" id="step9">
+  <div class="step-head">
+    <div class="step-num">9</div>
     <div class="step-title">
       <h2>Send Quote Reminder &mdash; Live Quick Action <span class="tag">LIVE</span></h2>
       <div class="meta">Do this one live. One button, two fields &mdash; the everyday move a rep makes without editing the whole record.</div>
@@ -388,9 +415,9 @@
   <div class="recovery"><strong>If you save a change</strong> &mdash; it's demo data, no harm. Reopen the action to restore the original values, or just leave it.</div>
 </div>
 
-<div class="step" id="step9">
+<div class="step" id="step10">
   <div class="step-head">
-    <div class="step-num">9</div>
+    <div class="step-num">10</div>
     <div class="step-title">
       <h2>Command Center &mdash; PACT Sales Overview <span class="tag">CLOSE</span></h2>
       <div class="meta">Close on the owner's view. Everything you just walked &mdash; pipeline, quote status, wins, at-risk &mdash; rolled up live.</div>
@@ -423,7 +450,7 @@
   </div>
   <div class="auto-grid">
     <div class="auto-card"><div class="tag2">On Quote Requested</div><div class="nm">Opportunity Quote Requested</div><div class="ds">Auto-creates the "build &amp; send quote" task when a deal enters Quote Requested.</div></div>
-    <div class="auto-card"><div class="tag2">On Closed Won</div><div class="nm">Opportunity Closed Won</div><div class="ds">Fires the production handoff &mdash; task + spec summary + team notification.</div></div>
+    <div class="auto-card" style="background:var(--kraftsoft);border-color:#E6CFB5"><div class="tag2" style="color:#8A521F">On Closed Won &middot; NEW</div><div class="nm">Active Order from Closed Won</div><div class="ds">Creates a production Active Order (separate object) when a quote is won &mdash; carries customer, value, spec &amp; a link back to the quote.</div></div>
     <div class="auto-card"><div class="tag2">On update</div><div class="nm">Opportunity At Risk Flag</div><div class="ds">Evaluates and stamps the At Risk flag as deals change.</div></div>
     <div class="auto-card"><div class="tag2">Scheduled &middot; daily</div><div class="nm">Daily Quote Due Reminder</div><div class="ds">Tasks the rep when a sent quote is within 3 days of its due date or overdue.</div></div>
     <div class="auto-card"><div class="tag2">Scheduled &middot; weekly</div><div class="nm">Weekly At Risk Summary</div><div class="ds">Flags stalled negotiation deals At Risk and emails the team a summary.</div></div>
@@ -441,8 +468,9 @@
     <div><h4>STEP 4 &mdash; QUOTE REQUESTED</h4><p><code>Beacon Foods - Retail Display Units</code><br>Quote Status: Draft</p></div>
     <div><h4>STEP 5 &mdash; QUOTE SENT</h4><p><code>Beacon Foods - HDPE Film Run</code><br>Quote Status: Sent &middot; due this week</p></div>
     <div><h4>STEP 6 &mdash; NEGOTIATION / AT-RISK</h4><p><code>Beacon Foods - FDA Carton Program</code><br>At Risk flagged</p></div>
-    <div><h4>STEP 7 &mdash; CLOSED WON</h4><p><code>Beacon Foods - Glossy Film Pilot</code><br>Quote Status: Won &middot; handed to production</p></div>
-    <div><h4>STEP 8 &amp; 9 &mdash; LIVE + DASHBOARD</h4><p><code>Send Quote Reminder</code> on the HDPE quote<br>then <code>PACT Sales Overview</code> (Refresh first)</p></div>
+    <div><h4>STEP 7 &mdash; CLOSED WON</h4><p><code>Beacon Foods - Glossy Film Pilot</code><br>Quote Status: Won &middot; spawns an Active Order</p></div>
+    <div><h4>STEP 8 &mdash; ACTIVE ORDERS</h4><p>App Launcher &rarr; <code>Active Orders</code> &rarr; <code>AO-00000</code><br>4 orders across the production stages</p></div>
+    <div><h4>STEP 9 &amp; 10 &mdash; LIVE + DASHBOARD</h4><p><code>Send Quote Reminder</code> on the HDPE quote<br>then <code>PACT Sales Overview</code> (Refresh first)</p></div>
   </div>
 </div>
 
@@ -476,8 +504,8 @@
   </div>
 
   <div class="qa">
-    <div class="q">"What happens to a deal when we win it? Production needs to know."</div>
-    <div class="a">Marking a quote Closed Won fires the handoff flow automatically &mdash; it creates a production-scheduling task, assembles the package spec, and notifies the team, with a Production Schedule Link on the record. That's the exact "quotes falling between sales and production" gap, closed.</div>
+    <div class="q">"How do you keep quotes and production separate, like we do today?"</div>
+    <div class="a">That's the core of this build. Quotes live on the Opportunity (your sales pipeline); production lives on a dedicated <strong>Active Order</strong> object. The instant a quote is marked Closed Won, one record-triggered flow creates an Active Order &mdash; carrying the customer, value, package spec, and a link back to the quote &mdash; and the production team works it on its own status lifecycle (Submitted &rarr; Shipped). The quote never "becomes" a production item, not every quote has to convert, and a won quote never clutters the production board. It's exactly the separation you described, automated.</div>
   </div>
 
   <div class="qa">
